@@ -137,7 +137,6 @@ bool SelfEncryptor::Truncate(uint64_t position) {
       if (t.first > position)
         chunks_.erase(chunks_.find(t.first));  // this is the only erase on chunks_
   } else {
-    assert(position - old_size < std::numeric_limits<uint32_t>::max());
     PrepareWindow(static_cast<uint32_t>(position - old_size), old_size, true);
   }
   ose.Release();
